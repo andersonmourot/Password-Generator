@@ -43,6 +43,18 @@ var generatePassword = function() {
   else if (confirmLowerCase && confirmUpperCase) {
     choices = lowerCase.concat (upperCase);
   }
+  else if (confirmLowerCase && confirmSpecialChar && confirmNumbers) {
+    choices = lowerCase.concat (specialChar, numbers);
+  }
+  else if (confirmLowerCase && confirmUpperCase && confirmNumbers) {
+    choices = lowerCase.concat (upperCase, numbers);
+  }
+  else if (confirmLowerCase && confirmSpecialChar) {
+    choices = lowerCase.concat (specialChar);
+  }
+  else if (confirmLowerCase && confirmNumbers) {
+    choices = lowerCase.concat (numbers);
+  }
   else if (confirmUpperCase && confirmSpecialChar && confirmNumbers) {
   choices = upperCase.concat (specialChar, numbers);
   }
@@ -51,6 +63,20 @@ var generatePassword = function() {
   }
   else if (confirmUpperCase && confirmNumbers) {
     choices = upperCase.concat (numbers);
+  } else if (confirmSpecialChar && confirmNumbers) {
+    choices = specialChar.concat (numbers);
+  }
+  else if (confirmLowerCase && !confirmUpperCase && !confirmSpecialChar && !confirmNumbers) {
+    choices = lowerCase;
+  }
+  else if (!confirmLowerCase && confirmUpperCase && !confirmSpecialChar && !confirmNumbers) {
+  choices = upperCase;
+  }
+  else if (!confirmLowerCase && !confirmUpperCase && confirmSpecialChar && !confirmNumbers) {
+    choices = specialChar;
+  }
+  else if (!confirmLowerCase && !confirmUpperCase && !confirmSpecialChar && confirmNumbers) {
+    choices = numbers;
   }
 }
 
