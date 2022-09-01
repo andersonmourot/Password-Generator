@@ -78,26 +78,25 @@ var generatePassword = function() {
   else if (!confirmLowerCase && !confirmUpperCase && !confirmSpecialChar && confirmNumbers) {
     choices = numbers;
   }
-}
 
-var genPassword = [];
-for (var i = 0; i < userChoice; i++) {
+
+  var genPassword = [];
+  for (var i = 0; i < userChoice; i++) {
   var pickChoices = choices[Math.floor(Math.random() * choices.length)];
   genPassword.push(pickChoices);
+  }
+
+  var password = genPassword.join("");
+
+  writePassword(password);
+  return password;
 }
-
-var password = genPassword.join("");
-
-UserInput(password);
-return password;
-
 
 // Get references to the #generate element
 
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
