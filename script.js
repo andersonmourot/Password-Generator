@@ -1,4 +1,4 @@
-// Assignment code here
+// Variables for the arrays needed to generate password
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var specialChar = ['@','%','+','\\','/',"'",'!','#','$','^','?',':',',',')','(','}','{',']','[','~','-','_','.'];
@@ -11,15 +11,19 @@ var confirmNumbers;
 
 var generateBtn = document.querySelector("#generate");
 
+// Activates the function when the button is clicked
 generateBtn.addEventListener("click", function (){
   password = generatePassword ();
   document.getElementById ("password").Placeholder = password;
   console.log("Button was clicked")
 });
 
+// Starts the first prompt to make the password
 var generatePassword = function() {
   var userChoice = parseInt(prompt ("How many characters would you like to use? 8-128"));
 
+
+//Prompts for password specification
   if (!userChoice) {
     alert("Choose a number!");
   } else if (userChoice < 8 || userChoice > 128) {
@@ -30,7 +34,7 @@ var generatePassword = function() {
     confirmSpecialChar = confirm ("Would you like to use special characters?");
     confirmNumbers = confirm ("Would you like to use numbers?");
   }
-
+// All of the different options for a password the user can select
   if (!confirmLowerCase && !confirmUpperCase && !confirmSpecialChar && !confirmNumbers) {
     choices = alert ("You must choose a criteria");
   }
@@ -88,11 +92,10 @@ var generatePassword = function() {
 
   var password = genPassword.join("");
 
+// Produces the password  
   writePassword(password);
   return password;
 }
-
-// Get references to the #generate element
 
 
 // Write password to the #password input
